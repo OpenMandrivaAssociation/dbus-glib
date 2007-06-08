@@ -9,7 +9,7 @@
 Summary: D-Bus message bus
 Name: dbus-glib
 Version: 0.73
-Release: %mkrel 1
+Release: %mkrel 2
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.bz2
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
@@ -30,7 +30,7 @@ the GLib thread abstraction and main loop.
 %package -n %{lib_name}
 Summary: GLib-based library for using D-Bus
 Group: System/Libraries
-Provides: dbus-glib = %version-%release
+Provides: dbus-glib = %{version}-%{release}
 
 %description -n %{lib_name}
 D-Bus add-on library to integrate the standard D-Bus library with
@@ -73,7 +73,7 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 #remove unpackaged file
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+rm -f %{buildroot}%{_libdir}/*.la
 
 %clean
 rm -rf %{buildroot}
@@ -88,14 +88,12 @@ rm -rf %{buildroot}
 %files -n %{lib_name}-devel
 %defattr(-,root,root)
 %{_bindir}/dbus-binding-tool
-%_libdir/libdbus-glib-%{lib_api}.a
-%_libdir/libdbus-glib-%{lib_api}.so
+%{_libdir}/libdbus-glib-%{lib_api}.a
+%{_libdir}/libdbus-glib-%{lib_api}.so
 %{_libdir}/pkgconfig/dbus-glib-%{lib_api}.pc
 %{_includedir}/dbus-1.0/dbus/dbus-glib-bindings.h
 %{_includedir}/dbus-1.0/dbus/dbus-gtype-specialized.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib-error-enum.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib-lowlevel.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib.h
-%_datadir/gtk-doc/html/dbus-glib/
-
-
+%{_datadir}/gtk-doc/html/dbus-glib/

@@ -8,10 +8,10 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.73
-Release: %mkrel 2
+Version: 0.74
+Release: %mkrel 1
 URL: http://www.freedesktop.org/Software/dbus
-Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.bz2
+Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Patch0: dbus-glib-0.70-dontgeneratexml.patch
 

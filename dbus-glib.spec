@@ -21,7 +21,6 @@ Patch1: dbus-glib-proxy-signals-once.patch
 
 License: AFL/GPL
 Group: System/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: glib2-devel >= %{glib2_version}
 BuildRequires: dbus-devel >= %{dbus_version}
 BuildRequires: libxml2-devel

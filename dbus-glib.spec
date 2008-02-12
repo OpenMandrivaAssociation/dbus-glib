@@ -49,7 +49,6 @@ Provides: lib%{name}-devel = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
 
 %description -n %{lib_name}-devel
-
 Headers and static libraries for D-Bus.
 
 

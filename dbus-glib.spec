@@ -9,7 +9,7 @@
 Summary: D-Bus message bus
 Name: dbus-glib
 Version: 0.74
-Release: %mkrel 2
+Release: %mkrel 3
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
@@ -18,6 +18,8 @@ Source1: dbus-bus-introspect.xml
 Patch0: dbus-glib-0.74-broken-xml.patch
 # (fc) 0.74-2mdv Dispatch NameOwnerChanged signals to proxies only once (fdo #12505)
 Patch1: dbus-glib-proxy-signals-once.patch
+# (proyvind) https://bugs.freedesktop.org/show_bug.cgi?id=14429
+Patch2: dbus-glib-0.73-ignore-namespaces.patch
 
 License: AFL/GPL
 Group: System/Libraries
@@ -56,6 +58,7 @@ Headers and static libraries for D-Bus.
 %setup -q
 %patch0 -p1 -b .broken-xml
 %patch1 -p1 -b .proxy-signal-once
+%patch2 -p1 -b .ignore-namespaces
 
 %build
 

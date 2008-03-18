@@ -9,7 +9,7 @@
 Summary: D-Bus message bus
 Name: dbus-glib
 Version: 0.74
-Release: %mkrel 3
+Release: %mkrel 4
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
@@ -37,6 +37,8 @@ the GLib thread abstraction and main loop.
 Summary: GLib-based library for using D-Bus
 Group: System/Libraries
 Provides: dbus-glib = %{version}-%{release}
+# keep this provides to be able Mdv 2007.0 using urpmi
+Provides: libdbus-glib = %{version}-%{release}
 
 %description -n %{lib_name}
 D-Bus add-on library to integrate the standard D-Bus library with

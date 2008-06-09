@@ -8,18 +8,14 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.74
-Release: %mkrel 4
+Version: 0.76
+Release: %mkrel 1
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Source1: dbus-bus-introspect.xml
-# (fc) 0.74-2mdv fix introspection (fd.o bug #8607) (GIT)
-Patch0: dbus-glib-0.74-broken-xml.patch
-# (fc) 0.74-2mdv Dispatch NameOwnerChanged signals to proxies only once (fdo #12505)
-Patch1: dbus-glib-proxy-signals-once.patch
-# (proyvind) https://bugs.freedesktop.org/show_bug.cgi?id=14429
-Patch2: dbus-glib-0.73-ignore-namespaces.patch
+# (fc) 0.76-1mdv wincaps-to-uscore property names for GetAll() (GIT) (fd.o bug #16114)
+Patch0: dbus-glib-0.76-getall-wincaps-to-uscore.patch
 
 License: AFL/GPL
 Group: System/Libraries
@@ -58,13 +54,9 @@ Headers and static libraries for D-Bus.
 
 %prep
 %setup -q
-%patch0 -p1 -b .broken-xml
-%patch1 -p1 -b .proxy-signal-once
-%patch2 -p1 -b .ignore-namespaces
+%patch0 -p1 -b .getall-wincaps-to-uscore
 
 %build
-
-%define _localstatedir %{_var}
 
 %configure2_5x  \
     --disable-tests \

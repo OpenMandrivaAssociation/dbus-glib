@@ -8,14 +8,14 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.76
-Release: %mkrel 2
+Version: 0.78
+Release: %mkrel 1
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Source1: dbus-bus-introspect.xml
-# (fc) 0.76-1mdv wincaps-to-uscore property names for GetAll() (GIT) (fd.o bug #16114)
-Patch0: dbus-glib-0.76-getall-wincaps-to-uscore.patch
+# (fc) 0.78-2mdv fix linking
+Patch0:	dbus-glib-0.78-expat.patch
 
 License: AFL/GPL
 Group: System/Libraries
@@ -54,7 +54,10 @@ Headers and static libraries for D-Bus.
 
 %prep
 %setup -q
-%patch0 -p1 -b .getall-wincaps-to-uscore
+%patch0 -p1 -b .expat
+
+#needed by patch0
+autoreconf
 
 %build
 
@@ -94,6 +97,8 @@ rm -rf %{buildroot}
 %files -n %{lib_name}-devel
 %defattr(-,root,root)
 %{_bindir}/dbus-binding-tool
+%{_sysconfdir}/profile.d/dbus-bash-completion.sh
+%{_libdir}/dbus-bash-completion-helper
 %{_libdir}/libdbus-glib-%{lib_api}.a
 %{_libdir}/libdbus-glib-%{lib_api}.so
 %{_libdir}/pkgconfig/dbus-glib-%{lib_api}.pc

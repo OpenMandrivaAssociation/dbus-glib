@@ -24,6 +24,8 @@ BuildRequires: glib2-devel >= %{glib2_version}
 BuildRequires: dbus-devel >= %{dbus_version}
 BuildRequires: libxml2-devel
 BuildRequires: libexpat-devel
+# needed by patch0
+BuildRequires: gtk-doc
 
 %description 
 D-Bus add-on library to integrate the standard D-Bus library with

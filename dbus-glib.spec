@@ -5,19 +5,21 @@
 %define lib_api 1
 %define lib_name %mklibname dbus-glib- %{lib_api} %{lib_major}
 
+%define git_url git://git.freedesktop.org/git/dbus/dbus-glib
+
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.78
+Version: 0.80
 Release: %mkrel 1
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Source1: dbus-bus-introspect.xml
-# (fc) 0.78-2mdv fix linking
-Patch0:	dbus-glib-0.78-expat.patch
+# (fc) 0.80-1mdv fix format security warning
+Patch0:	dbus-glib-0.80-fix-format-security.patch
 
-License: AFL/GPL
+License: AFL and GPLv2
 Group: System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: glib2-devel >= %{glib2_version}
@@ -56,10 +58,7 @@ Headers and static libraries for D-Bus.
 
 %prep
 %setup -q
-%patch0 -p1 -b .expat
-
-#needed by patch0
-autoreconf
+%patch0 -p1 -b .fix-format-security
 
 %build
 
@@ -99,7 +98,7 @@ rm -rf %{buildroot}
 %files -n %{lib_name}-devel
 %defattr(-,root,root)
 %{_bindir}/dbus-binding-tool
-%{_sysconfdir}/profile.d/dbus-bash-completion.sh
+%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
 %{_libdir}/dbus-bash-completion-helper
 %{_libdir}/libdbus-glib-%{lib_api}.a
 %{_libdir}/libdbus-glib-%{lib_api}.so

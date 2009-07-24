@@ -10,14 +10,12 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.80
+Version: 0.82
 Release: %mkrel 1
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Source1: dbus-bus-introspect.xml
-# (fc) 0.80-1mdv fix format security warning
-Patch0:	dbus-glib-0.80-fix-format-security.patch
 
 License: AFL and GPLv2
 Group: System/Libraries
@@ -58,7 +56,6 @@ Headers and static libraries for D-Bus.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fix-format-security
 
 %build
 
@@ -109,3 +106,4 @@ rm -rf %{buildroot}
 %{_includedir}/dbus-1.0/dbus/dbus-glib-lowlevel.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib.h
 %{_datadir}/gtk-doc/html/dbus-glib/
+%{_mandir}/man1/*

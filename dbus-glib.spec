@@ -1,9 +1,9 @@
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 2
+%define release %mkrel 3
 %else
 # Old distros
-%define subrel 1
+%define subrel 2
 %define release %mkrel 1
 %endif
 %define glib2_version           2.6.0
@@ -24,7 +24,8 @@ URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)
 Source1: dbus-bus-introspect.xml
-
+#gw from Debian: allow duplicate object registrations
+Patch: 10_support_duplicate_object_registrations.patch
 License: AFL and GPLv2
 Group: System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -64,6 +65,7 @@ Headers and static libraries for D-Bus.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 

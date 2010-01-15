@@ -1,3 +1,11 @@
+%if %mandriva_branch == Cooker
+# Cooker
+%define release %mkrel 2
+%else
+# Old distros
+%define subrel 1
+%define release %mkrel 1
+%endif
 %define glib2_version           2.6.0
 %define dbus_version		0.94
 
@@ -11,7 +19,7 @@
 Summary: D-Bus message bus
 Name: dbus-glib
 Version: 0.82
-Release: %mkrel 1
+Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
 # (fc) 0.71-1mdv don't require running bus to build (Fedora)

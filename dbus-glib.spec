@@ -18,7 +18,7 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.84
+Version: 0.86
 Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz

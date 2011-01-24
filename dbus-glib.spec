@@ -18,7 +18,7 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.88
+Version: 0.92
 Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
@@ -109,5 +109,6 @@ rm -rf %{buildroot}
 %{_includedir}/dbus-1.0/dbus/dbus-glib-error-enum.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib-lowlevel.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib.h
+%{_includedir}/dbus-1.0/dbus/dbus-gvalue-parse-variant.h
 %{_datadir}/gtk-doc/html/dbus-glib/
 %{_mandir}/man1/*

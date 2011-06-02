@@ -1,6 +1,6 @@
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 4
+%define release %mkrel 1
 %else
 # Old distros
 %define subrel 2
@@ -18,7 +18,7 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.92
+Version: 0.94
 Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
@@ -106,7 +106,6 @@ rm -rf %{buildroot}
 %{_libdir}/pkgconfig/dbus-glib-%{lib_api}.pc
 %{_includedir}/dbus-1.0/dbus/dbus-glib-bindings.h
 %{_includedir}/dbus-1.0/dbus/dbus-gtype-specialized.h
-%{_includedir}/dbus-1.0/dbus/dbus-glib-error-enum.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib-lowlevel.h
 %{_includedir}/dbus-1.0/dbus/dbus-glib.h
 %{_includedir}/dbus-1.0/dbus/dbus-gvalue-parse-variant.h

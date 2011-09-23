@@ -1,6 +1,6 @@
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 2
+%define release %mkrel 1
 %else
 # Old distros
 %define subrel 2
@@ -18,12 +18,10 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.94
+Version: 0.96
 Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
-#gw https://qa.mandriva.com/show_bug.cgi?id=63728
-Patch0: 0001-Fix-regression-in-marshalling-objects-as-object-path.patch
 License: AFL and GPLv2
 Group: System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-root

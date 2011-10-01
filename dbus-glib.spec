@@ -18,10 +18,11 @@
 
 Summary: D-Bus message bus
 Name: dbus-glib
-Version: 0.96
+Version: 0.98
 Release: %release
 URL: http://www.freedesktop.org/Software/dbus
 Source0: http://dbus.freedesktop.org/releases/%name/%{name}-%{version}.tar.gz
+Patch0: dbus-glib-0.98-format-string.patch
 License: AFL and GPLv2
 Group: System/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-root

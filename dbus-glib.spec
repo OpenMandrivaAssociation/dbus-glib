@@ -20,8 +20,6 @@ BuildRequires: expat-devel
 BuildRequires: pkgconfig(dbus-1) >= 0.94
 BuildRequires: pkgconfig(glib-2.0) >= 2.6.0
 BuildRequires: pkgconfig(libxml-2.0)
-# needed by patch0
-BuildRequires: gtk-doc
 
 %description 
 D-Bus add-on library to integrate the standard D-Bus library with

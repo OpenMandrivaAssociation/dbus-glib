@@ -43,7 +43,7 @@ Requires: %{lib_name} = %{version}-%{release}
 Provides: lib%{name}-1-devel = %{version}-%{release}
 Provides: lib%{name}-devel = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %mklibname %{name}- %{lib_api} %{lib_major} -d
+Obsoletes: %mklibname %{name}- %{api} %{major} -d
 
 %description -n %{develname}
 Headers libraries for D-Bus.
@@ -73,7 +73,7 @@ rm -rf %{buildroot}
 rm -f %{buildroot}%{_libdir}/*.la
 
 %files -n %{lib_name}
-%{_libdir}/*glib*.so.%{lib_major}*
+%{_libdir}/*glib*.so.%{major}*
 
 %files -n %{develname}
 %{_bindir}/dbus-binding-tool

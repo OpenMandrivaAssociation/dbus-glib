@@ -6,41 +6,40 @@
 %define git_url git://git.freedesktop.org/git/dbus/dbus-glib
 
 
-Summary: D-Bus message bus
-Name: dbus-glib
-Version: 0.98
-Release: 6
-License: AFL and GPLv2
-Group: System/Libraries
-URL: http://www.freedesktop.org/Software/dbus
-Source0: http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-Patch0: dbus-glib-0.98-format-string.patch
-
-BuildRequires: expat-devel
-BuildRequires: pkgconfig(dbus-1) >= 0.94
-BuildRequires: pkgconfig(glib-2.0) >= 2.6.0
-BuildRequires: pkgconfig(libxml-2.0)
+Summary:	D-Bus message bus
+Name:		dbus-glib
+Version:	0.100
+Release:	1
+License:	AFL and GPLv2
+Group:		System/Libraries
+URL:		http://www.freedesktop.org/Software/dbus
+Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
+Patch0:		dbus-glib-0.98-format-string.patch
+BuildRequires:	expat-devel
+BuildRequires:	pkgconfig(dbus-1) >= 0.94
+BuildRequires:	pkgconfig(glib-2.0) >= 2.6.0
+BuildRequires:	pkgconfig(libxml-2.0)
 
 %description 
 D-Bus add-on library to integrate the standard D-Bus library with
 the GLib thread abstraction and main loop.
 
 %package -n %{libname}
-Summary: D-Bus GLib-based library
-Group: System/Libraries
-Provides: dbus-glib = %{version}-%{release}
+Summary:	D-Bus GLib-based library
+Group:		System/Libraries
+Provides:	dbus-glib = %{version}-%{release}
 # keep this provides to be able Mdv 2007.0 using urpmi
-Provides: libdbus-glib = %{version}-%{release}
+Provides:	libdbus-glib = %{version}-%{release}
 
 %description -n %{libname}
 D-Bus add-on library to integrate the standard D-Bus library with
 the GLib thread abstraction and main loop.
 
 %package -n %{develname}
-Summary: D-Bus headers
-Group: Development/C
-Requires: %{libname} = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release}
+Summary:	D-Bus headers
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}dbus-glib-1_2-devel < 0.98
 
 %description -n %{develname}

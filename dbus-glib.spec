@@ -14,7 +14,6 @@ License:	AFL and GPLv2
 Group:		System/Libraries
 URL:		http://www.freedesktop.org/Software/dbus
 Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-Patch0:		dbus-glib-0.98-format-string.patch
 BuildRequires:	expat-devel
 BuildRequires:	pkgconfig(dbus-1) >= 0.94
 BuildRequires:	pkgconfig(glib-2.0) >= 2.6.0
@@ -47,7 +46,6 @@ Headers libraries for D-Bus.
 
 %prep
 %setup -q
-%apply_patches
 
 %build
 %configure2_5x  \

@@ -8,8 +8,8 @@
 
 Summary:	D-Bus message bus
 Name:		dbus-glib
-Version:	0.100
-Release:	2
+Version:	0.100.1
+Release:	1
 License:	AFL and GPLv2
 Group:		System/Libraries
 URL:		http://www.freedesktop.org/Software/dbus

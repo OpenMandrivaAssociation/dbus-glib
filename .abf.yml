@@ -1,2 +1,3 @@
+---
 sources:
-  "dbus-glib-0.98.tar.gz": 203f02e41eba1aeac8986e655d794c8833e437bf
+  dbus-glib-0.100.1.tar.gz: 5fb84e6a6b5b1957d8023de24a768cbdfa01ae48

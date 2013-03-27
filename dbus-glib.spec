@@ -4,6 +4,7 @@
 %define develname %mklibname dbus-glib- %{api} -d
 
 %define git_url git://git.freedesktop.org/git/dbus/dbus-glib
+%bcond_with	crosscompile
 
 
 Summary:	D-Bus message bus
@@ -46,8 +47,16 @@ Headers libraries for D-Bus.
 
 %prep
 %setup -q
+#fix build with new automake
+sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
+autoreconf -fi
 
 %build
+%if %{with crosscompile}
+export ac_cv_have_abstract_sockets=yes
+export ac_cv_func_posix_getpwnam_r=yes
+export have_abstract_sockets=yes
+%endif
 %configure2_5x  \
     --disable-static \
     --disable-tests \

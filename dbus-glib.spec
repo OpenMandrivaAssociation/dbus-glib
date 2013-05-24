@@ -9,7 +9,7 @@
 Summary:	D-Bus message bus
 Name:		dbus-glib
 Version:	0.100.2
-Release:	1
+Release:	2
 License:	AFL and GPLv2
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
@@ -57,6 +57,9 @@ export have_abstract_sockets=yes
 	--disable-static \
 	--disable-tests \
 	--disable-verbose-mode \
+%if %{with crosscompile}
+	--with-dbus-binding-tool=/usr/bin/dbus-binding-tool \
+%endif
 	--disable-asserts
 
 %make
@@ -79,4 +82,3 @@ make check
 %{_includedir}/dbus-1.0/dbus/*.h
 %{_datadir}/gtk-doc/html/dbus-glib/
 %{_mandir}/man1/*
-

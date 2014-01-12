@@ -9,7 +9,7 @@
 Summary:	D-Bus message bus
 Name:		dbus-glib
 Version:	0.100.2
-Release:	2
+Release:	3
 License:	AFL and GPLv2
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus

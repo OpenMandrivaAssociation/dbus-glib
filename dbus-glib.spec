@@ -76,7 +76,7 @@ make check
 %files -n %{devname}
 %{_bindir}/dbus-binding-tool
 %{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
-%{_libdir}/dbus-bash-completion-helper
+%{_libexecdir}/dbus-bash-completion-helper
 %{_libdir}/libdbus-glib-%{api}.so
 %{_libdir}/pkgconfig/dbus-glib-%{api}.pc
 %{_includedir}/dbus-1.0/dbus/*.h

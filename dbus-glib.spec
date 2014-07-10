@@ -1,16 +1,16 @@
-%define api	1
-%define major	2
-%define libname	%mklibname dbus-glib- %{api} %{major}
-%define devname	%mklibname dbus-glib- %{api} -d
+%define api 1
+%define major 2
+%define libname %mklibname dbus-glib- %{api} %{major}
+%define devname %mklibname dbus-glib- %{api} -d
 
 %define git_url git://git.freedesktop.org/git/dbus/dbus-glib
-%bcond_with	crosscompile
+%bcond_with crosscompile
 
 Summary:	D-Bus message bus
 Name:		dbus-glib
-Version:	0.100.2
-Release:	7
-License:	AFL and GPLv2
+Version:	0.102
+Release:	1
+License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
 Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
@@ -19,27 +19,46 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 
-%description 
+%description
 D-Bus add-on library to integrate the standard D-Bus library with
 the GLib thread abstraction and main loop.
+
+#----------------------------------------------------------------------------
 
 %package -n %{libname}
 Summary:	D-Bus GLib-based library
 Group:		System/Libraries
-Provides:	dbus-glib = %{version}-%{release}
+Provides:	dbus-glib = %{EVRD}
 
 %description -n %{libname}
 D-Bus add-on library to integrate the standard D-Bus library with
 the GLib thread abstraction and main loop.
 
+%files -n %{libname}
+%{_libdir}/libdbus-glib-%{api}.so.%{major}*
+
+#----------------------------------------------------------------------------
+
 %package -n %{devname}
 Summary:	D-Bus headers
 Group:		Development/C
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
 Headers libraries for D-Bus.
+
+%files -n %{devname}
+%{_bindir}/dbus-binding-tool
+%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
+%{_libexecdir}/dbus-bash-completion-helper
+%{_libdir}/libdbus-glib-%{api}.so
+%{_libdir}/pkgconfig/dbus-glib-%{api}.pc
+%{_includedir}/dbus-1.0/dbus/*.h
+%{_datadir}/gtk-doc/html/dbus-glib/
+%{_mandir}/man1/*
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -64,21 +83,9 @@ export have_abstract_sockets=yes
 
 %make
 
-%check
-make check
-
 %install
 %makeinstall_std
 
-%files -n %{libname}
-%{_libdir}/libdbus-glib-%{api}.so.%{major}*
+%check
+make check
 
-%files -n %{devname}
-%{_bindir}/dbus-binding-tool
-%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
-%{_libexecdir}/dbus-bash-completion-helper
-%{_libdir}/libdbus-glib-%{api}.so
-%{_libdir}/pkgconfig/dbus-glib-%{api}.pc
-%{_includedir}/dbus-1.0/dbus/*.h
-%{_datadir}/gtk-doc/html/dbus-glib/
-%{_mandir}/man1/*

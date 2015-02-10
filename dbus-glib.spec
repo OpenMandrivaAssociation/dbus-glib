@@ -8,8 +8,8 @@
 
 Summary:	D-Bus message bus
 Name:		dbus-glib
-Version:	0.102
-Release:	3
+Version:	0.104
+Release:	1
 License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
@@ -72,7 +72,7 @@ export ac_cv_have_abstract_sockets=yes
 export ac_cv_func_posix_getpwnam_r=yes
 export have_abstract_sockets=yes
 %endif
-%configure2_5x  \
+%configure  \
 	--disable-static \
 	--disable-tests \
 	--disable-verbose-mode \

@@ -8,16 +8,17 @@
 
 Summary:	D-Bus message bus
 Name:		dbus-glib
-Version:	0.104
-Release:	4
+Version:	0.106
+Release:	1
 License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
 Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(expat)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(gio-2.0) >= 2.32
+BuildRequires:	pkgconfig(gobject-2.0) >= 2.32
+BuildRequires:	chrpath
 
 %description
 D-Bus add-on library to integrate the standard D-Bus library with
@@ -62,9 +63,6 @@ Headers libraries for D-Bus.
 
 %prep
 %setup -q
-#fix build with new automake
-sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,g' configure.*
-autoreconf -fi
 
 %build
 %if %{with crosscompile}
@@ -86,6 +84,14 @@ export have_abstract_sockets=yes
 %install
 %makeinstall_std
 
+#remove unpackaged file
+rm -f %{buildroot}%{_libdir}/*.la
+
+chrpath --delete %{buildroot}%{_bindir}/dbus-binding-tool
+chrpath --delete %{buildroot}%{_libexecdir}/dbus-bash-completion-helper
+
+# Scripts that are sourced should not be executable.
+chmod -x %{buildroot}%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
+
 %check
 make check
-

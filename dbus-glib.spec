@@ -9,7 +9,7 @@
 Summary:	D-Bus message bus
 Name:		dbus-glib
 Version:	0.110
-Release:	2
+Release:	3
 License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
@@ -90,5 +90,3 @@ chrpath --delete %{buildroot}%{_libexecdir}/dbus-bash-completion-helper
 # Scripts that are sourced should not be executable.
 chmod -x %{buildroot}%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
 
-%check
-make check

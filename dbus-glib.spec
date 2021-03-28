@@ -8,8 +8,8 @@
 
 Summary:	D-Bus message bus
 Name:		dbus-glib
-Version:	0.110
-Release:	4
+Version:	0.112
+Release:	1
 License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		http://www.freedesktop.org/Software/dbus
@@ -79,10 +79,10 @@ export have_abstract_sockets=yes
 %endif
 	--disable-asserts
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 chrpath --delete %{buildroot}%{_bindir}/dbus-binding-tool
 chrpath --delete %{buildroot}%{_libexecdir}/dbus-bash-completion-helper

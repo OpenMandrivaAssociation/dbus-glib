@@ -12,7 +12,7 @@ Version:	0.112
 Release:	2
 License:	AFL and GPLv2+
 Group:		System/Libraries
-Url:		http://www.freedesktop.org/Software/dbus
+Url:		https://www.freedesktop.org/Software/dbus
 Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(expat)

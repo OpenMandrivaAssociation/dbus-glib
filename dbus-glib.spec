@@ -14,6 +14,11 @@ License:	AFL and GPLv2+
 Group:		System/Libraries
 Url:		https://www.freedesktop.org/Software/dbus
 Source0:	http://dbus.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.32
